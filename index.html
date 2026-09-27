@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>三日坊主タイプ診断｜あなたが続かない、本当の理由</title>
+<meta name="description" content="15の質問に答えるだけ。約2分で、あなたが続かない原因と、今日からの処方箋が分かります。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="三日坊主タイプ診断｜あなたが続かない、本当の理由">
+<meta property="og:description" content="15の質問に答えるだけ。約2分で、あなたが続かない原因と、今日からの処方箋が分かります。">
+<meta property="og:image" content="https://baseball1018185-sys.github.io/mikkabozu-shindan/og.png">
+<meta property="og:url" content="https://baseball1018185-sys.github.io/mikkabozu-shindan/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0b;--panel:#151515;--line:#2a2a2a;--gold:#d4af37;--gold2:#f2d675;--text:#ececec;--muted:#9a9a9a;
+--mincho:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;--sans:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-text-size-adjust:100%}
+body{min-height:100vh;overflow-x:hidden}
+.wrap{max-width:520px;margin:0 auto;padding:28px 20px 48px}
+.screen[hidden]{display:none!important}
+h1,h2,h3,.mincho{font-family:var(--mincho)}
+.eyebrow{color:var(--gold);letter-spacing:.2em;font-size:12px}
+.btn{display:block;width:100%;border:0;border-radius:12px;padding:17px 16px;font-size:17px;font-weight:700;font-family:var(--sans);cursor:pointer;text-align:center;text-decoration:none;transition:transform .08s,opacity .15s}
+.btn:active{transform:scale(.98)}
+.btn-gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#111}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-sub{background:var(--panel);color:var(--text);border:1px solid var(--line)}
+.note{color:var(--muted);font-size:12px;line-height:1.7}
+/* intro */
+.intro{min-height:calc(100vh - 76px);display:flex;flex-direction:column;justify-content:center}
+.intro h1{font-size:40px;line-height:1.25;margin:14px 0 10px;font-weight:800}
+.intro h1 span{color:var(--gold)}
+.intro .lead{font-family:var(--mincho);font-size:20px;margin:0 0 26px;color:var(--gold2)}
+.intro p{line-height:1.9;margin:0 0 30px;font-size:15px}
+.intro .types{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+.intro .types span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;color:var(--muted)}
+/* quiz */
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.back{background:none;border:0;color:var(--muted);font-size:14px;padding:6px 0;cursor:pointer}
+.back[disabled]{visibility:hidden}
+.count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:34px}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .25s}
+.qnum{font-family:var(--mincho);color:var(--gold);font-size:14px;letter-spacing:.1em;margin-bottom:10px}
+.qtext{font-family:var(--mincho);font-size:24px;line-height:1.6;font-weight:700;min-height:120px;margin:0 0 28px}
+.choices{display:grid;gap:10px}
+.choice{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:17px 18px;font-size:16px;text-align:left;cursor:pointer;font-family:var(--sans);display:flex;justify-content:space-between;align-items:center}
+.choice:hover{border-color:#444}
+.choice.sel{border-color:var(--gold);color:var(--gold2)}
+.choice small{color:var(--muted);font-size:12px}
+/* result */
+.rhead{text-align:center;padding:10px 0 6px}
+.rhead .you{color:var(--muted);font-size:14px}
+.rhead h2{font-size:44px;margin:6px 0 4px;color:var(--gold);font-weight:800;letter-spacing:.04em}
+.rhead .catch{font-family:var(--mincho);font-size:19px;margin:0}
+.lowmsg{margin:18px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:14px;line-height:1.8;color:var(--muted)}
+.radar{display:block;margin:18px auto 4px;width:100%;max-width:340px;height:auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 18px;margin:14px 0}
+.card h3{margin:0 0 12px;font-size:17px;color:var(--gold2);display:flex;gap:8px;align-items:center}
+.card h3 b{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#111;font-size:12px;align-items:center;justify-content:center;font-family:var(--sans)}
+.card p{margin:0;line-height:1.9;font-size:15px}
+.card ul{margin:0;padding-left:1.2em;line-height:1.9;font-size:15px}
+.card ol{margin:0;padding:0;list-style:none;counter-reset:rx}
+.card ol li{counter-increment:rx;display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.7}
+.card ol li:first-child{border-top:0;padding-top:0}
+.card ol li::before{content:counter(rx);flex:0 0 24px;height:24px;border-radius:6px;border:1px solid var(--gold);color:var(--gold);font-size:13px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.src{margin-top:12px;font-size:12px;color:var(--muted)}
+.src a{color:var(--muted)}
+.share{display:grid;gap:10px;margin:22px 0}
+.share .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cta{margin:30px 0 10px;padding:26px 20px;border:1px solid var(--gold);border-radius:16px;text-align:center;background:radial-gradient(120% 90% at 50% 0%,rgba(212,175,55,.14),transparent 70%)}
+.cta .k{font-family:var(--mincho);font-size:15px;color:var(--muted);margin:0 0 8px}
+.cta h3{font-family:var(--mincho);font-size:26px;margin:0 0 12px;color:var(--gold)}
+.cta p{font-size:14px;line-height:1.9;margin:0 0 18px}
+.cta .btn{margin-top:10px}
+.foot{text-align:center;margin-top:26px}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.86);display:flex;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal[hidden]{display:none}
+.modal .box{max-width:420px;width:100%;text-align:center}
+.modal img{width:100%;max-height:68vh;object-fit:contain;border-radius:12px;border:1px solid var(--line)}
+.modal p{font-size:13px;color:var(--muted);margin:12px 0}
+.modal .btn{margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section id="intro" class="screen">
+    <div class="intro">
+      <div class="eyebrow">DIAGNOSIS</div>
+      <h1><span>三日坊主</span><br>タイプ診断</h1>
+      <p class="lead">あなたが続かない、本当の理由。</p>
+      <p>15の質問に答えるだけ。約2分で、あなたが続かない原因と、今日からの処方箋が分かります。</p>
+      <div class="types"><span>夜ふかし型</span><span>完璧主義型</span><span>ひとり甘え型</span><span>大風呂敷型</span><span>燃え尽き型</span></div>
+      <button class="btn btn-gold" id="startBtn">診断をはじめる</button>
+      <p class="note" style="margin-top:16px">※エンタメと自己理解のための簡易診断です。医学的な診断ではありません。</p>
+    </div>
+  </section>
+
+  <section id="quiz" class="screen" hidden>
+    <div class="top"><button class="back" id="backBtn">← 戻る</button><span class="count" id="count">1 / 15</span></div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="qnum" id="qnum">Q1</div>
+    <p class="qtext" id="qtext"></p>
+    <div class="choices" id="choices"></div>
+  </section>
+
+  <section id="result" class="screen" hidden>
+    <div class="rhead">
+      <div class="you">あなたは</div>
+      <h2 id="rName"></h2>
+      <p class="catch" id="rCatch"></p>
+    </div>
+    <p class="lowmsg" id="lowMsg" hidden>どのタイプの傾向も弱めでした。今のやり方で続けられているなら、それが一番です。いちばん近いのは、このタイプです。</p>
+    <svg class="radar" id="radar" viewBox="0 0 340 320" role="img" aria-label="5つのタイプの傾向"></svg>
+
+    <div class="card"><h3><b>1</b>あなたの特徴</h3><ul id="rTraits"></ul></div>
+    <div class="card"><h3><b>2</b>なぜ続かないのか</h3><p id="rCause"></p><div class="src" id="rSrc"></div></div>
+    <div class="card"><h3><b>3</b>今日からの処方箋</h3><ol id="rRx"></ol></div>
+    <div class="card"><h3><b>4</b>帝国なら、こう続けられる</h3><p id="rTeikoku"></p></div>
+
+    <div class="share">
+      <button class="btn btn-gold" id="shareImgBtn">結果を画像で保存・シェア</button>
+      <div class="row">
+        <a class="btn btn-sub" id="shareX" target="_blank" rel="noopener">Xでシェア</a>
+        <a class="btn btn-sub" id="shareLine" target="_blank" rel="noopener">LINEで送る</a>
+      </div>
+    </div>
+
+    <div class="cta">
+      <p class="k">タイプが分かっても、1人だと、また同じところで止まります。</p>
+      <h3>目標達成コミュニティ「帝国」</h3>
+      <p>毎日書く場所と、見てくれる仲間。<br>月2回までは休んでも、連続は途切れません。</p>
+      <div id="ctaBtns"></div>
+    </div>
+
+    <div class="foot">
+      <button class="btn btn-ghost" id="retryBtn">もう一度診断する</button>
+      <p class="note" style="margin-top:18px">※エンタメと自己理解のための簡易診断です。医学的な診断ではありません。</p>
+    </div>
+  </section>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="box">
+    <img id="shareImg" alt="診断結果の画像">
+    <p>画像を長押しすると保存できます。ストーリーズに載せてみてください。</p>
+    <a class="btn btn-gold" id="dlBtn" download="mikkabozu.png">画像を保存する</a>
+    <button class="btn btn-ghost" id="closeModal">閉じる</button>
+  </div>
+</div>
+
+<script>
+/* ====== 設定：URLが決まったらここに入れる ====== */
+const CONFIG = {
+  noteUrl: "",       // 帝国のnote記事
+  standardUrl: "",   // MOSH スタンダード（月980円）
+  premiumUrl: "",    // MOSH プレミアム（月9,980円）
+  instagramUrl: ""   // ティーチのInstagram
+};
+/* ============================================== */
+
+const AXES = ["night","perfect","alone","big","tired"];
+const TYPES = {
+  night:{name:"夜ふかし型",short:"夜ふかし",catch:"夜に元気、朝に負ける人",
+    traits:["夜になると頭が冴えて、「明日こそやろう」と思える。","でも寝るのが遅くなり、朝は起きられない。","決めたのは夜の自分、破るのは朝の自分。"],
+    cause:"体内時計が夜側にずれています。厚生労働省の睡眠ガイドでは、起きてすぐ朝日の光を浴びると体内時計がリセットされるとされ、寝室にスマホを持ち込まないことが勧められています。",
+    src:["厚生労働省「健康づくりのための睡眠ガイド2023」","https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/suimin/index.html"],
+    rx:["寝る時刻ではなく、起きる時刻を先に決める","起きたらすぐカーテンを開けて、朝日を浴びる","スマホは寝室の外で充電する"],
+    teikoku:"挨拶部屋は、何時に起きても書けば出席です。まずは起きた時刻を毎日書いて、少しずつ早めていきましょう。朝が苦手なうちは、夜活ルームから始めても大丈夫です。"},
+  perfect:{name:"完璧主義型",short:"完璧主義",catch:"1日の失敗で、全部を捨てる人",
+    traits:["始めるときは、誰よりも本気。","でも1日でも予定どおりにいかないと、「もうダメだ」と思ってしまう。","そして、全部やめる。"],
+    cause:"「1日休んだら終わり」という思い込みが原因です。ロンドン大学の研究では、習慣になるまで平均66日かかる一方、1日サボっても習慣化の確率は下がりませんでした。",
+    src:["Lally et al.（2010）European Journal of Social Psychology","https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674"],
+    rx:["できなかった日も「やってない」と記録に残す","最低ラインを決める（疲れた日は1分でいい）","2日連続で休まないことだけ守る"],
+    teikoku:"帝国では、月2回までは休んでも連続が切れません。連続が切れても、一度手に入れた称号は下がりません。「1日くらい大丈夫」が、ルールになっている場所です。"},
+  alone:{name:"ひとり甘え型",short:"ひとり甘え",catch:"誰も見ていないと、やめてしまう人",
+    traits:["人との約束は守れるのに、自分との約束は後回し。","1人で始めたことは、誰にも気づかれずに終わる。","「今日はいいか」が、毎日続く。"],
+    cause:"1人の目標は、やめても誰にも気づかれません。138の研究をまとめた分析では、進捗を記録し、人に見せたり報告したりするほど、目標の達成が進むことが分かっています。",
+    src:["Harkin et al.（2016）Psychological Bulletin","https://pubmed.ncbi.nlm.nih.gov/26479070/"],
+    rx:["目標を1人に宣言する","毎日の結果を、誰かに報告する","報告する時刻を決めておく"],
+    teikoku:"帝国では、起きたら挨拶部屋、寝る前に就寝報告部屋に書くだけ。それだけで、毎日「誰かに見られている」状態が作れます。"},
+  big:{name:"大風呂敷型",short:"大風呂敷",catch:"目標が大きすぎて、動けなくなる人",
+    traits:["やる気があるときに、大きな目標をいくつも立てる。","最初の1週間は全力。","でも途中で重くなって、止まってしまう。"],
+    cause:"目標が大きすぎる、多すぎる、曖昧すぎるのが原因です。94の研究をまとめた分析では、「Xが起きたらYする」と具体的に決めておくだけで、目標の達成率が上がることが分かっています。",
+    src:["Gollwitzer & Sheeran（2006）Advances in Experimental Social Psychology","https://www.researchgate.net/publication/37367696"],
+    rx:["目標は1つに絞る","数字を入れる（「英語を頑張る」→「英単語を1日10個」）","4週に分けて、1週目を一番小さくする"],
+    teikoku:"帝国の月間目標は、1つだけ。週間目標で4つに分けて、×だった週は「来週は何を1つ減らすか」を決めます。小さく始めて、◯を積み上げる場所です。"},
+  tired:{name:"燃え尽き型",short:"燃え尽き",catch:"仕事終わりに、何も残っていない人",
+    traits:["平日は仕事で精一杯。","帰ってからやろうと思っても、気づけばスマホを見て寝る時間。","「週末にまとめて」と思って、結局やらない。"],
+    cause:"気力が残っていない時間に、大事なことを置いています。205人の1週間を記録した研究では、意志が強い人ほど我慢した回数はむしろ少なく、誘惑に出会う回数そのものが少ないことが分かりました。続く人は、根性ではなく環境で動いています。",
+    src:["Hofmann et al.（2012）Journal of Personality and Social Psychology","https://pubmed.ncbi.nlm.nih.gov/22149456/"],
+    rx:["やることを「5分で終わる大きさ」にする","準備を前の日に済ませて、始めるまでの手間を減らす","気力が残っている朝か、昼休みに回す"],
+    teikoku:"帝国の朝活ルームと夜活ルームは、入るだけでOK。カメラもマイクもオフのまま、誰かがいる場所で5分だけ手を動かす。そこから始められます。"}
+};
+const QUESTIONS = [
+  {t:"night",q:"夜になると元気が出て、つい夜更かししてしまう"},
+  {t:"night",q:"休日は、平日より2時間以上遅く起きる"},
+  {t:"night",q:"寝る直前まで、スマホを見ている"},
+  {t:"perfect",q:"1日できなかった日があると、そのままやめてしまう"},
+  {t:"perfect",q:"やるなら、完璧にやりたいと思う"},
+  {t:"perfect",q:"予定どおりにいかないと、全部どうでもよくなる"},
+  {t:"alone",q:"目標を、誰にも話さずに始めることが多い"},
+  {t:"alone",q:"誰かと約束していると、ちゃんとやれる"},
+  {t:"alone",q:"1人だと「今日はいいか」と思ってしまう"},
+  {t:"big",q:"一度に、いくつもの目標を立ててしまう"},
+  {t:"big",q:"目標に数字が入っていない（例：英語を頑張る）"},
+  {t:"big",q:"始めた最初の1週間が、一番がんばっている"},
+  {t:"tired",q:"仕事から帰ると、何もする気が起きない"},
+  {t:"tired",q:"「週末にまとめてやろう」と思って、結局やらない"},
+  {t:"tired",q:"疲れて、ソファやベッドで寝落ちすることがある"}
+];
+const CHOICES = [["よくある",3],["ときどき",2],["あまりない",1],["ない",0]];
+const PRIORITY = ["perfect","alone","big","night","tired"];
+
+const $ = id => document.getElementById(id);
+let order=[], answers={}, idx=0, lastResult=null;
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function show(id){["intro","quiz","result"].forEach(s=>$(s).hidden=(s!==id));window.scrollTo(0,0);}
+
+function start(){order=shuffle([...Array(QUESTIONS.length).keys()]);answers={};idx=0;renderQ();show("quiz");}
+function renderQ(){
+  const qi=order[idx], n=QUESTIONS.length;
+  $("count").textContent=`${idx+1} / ${n}`;
+  $("barFill").style.width=`${(idx/n)*100}%`;
+  $("qnum").textContent=`Q${idx+1}`;
+  $("qtext").textContent=QUESTIONS[qi].q;
+  $("backBtn").disabled=(idx===0);
+  const box=$("choices"); box.innerHTML="";
+  CHOICES.forEach(([label,val])=>{
+    const b=document.createElement("button"); b.className="choice"+(answers[qi]===val?" sel":"");
+    b.innerHTML=`<span>${label}</span><small>›</small>`;
+    b.onclick=()=>{answers[qi]=val; b.classList.add("sel"); setTimeout(next,140);};
+    box.appendChild(b);
+  });
+}
+function next(){ if(idx<QUESTIONS.length-1){idx++;renderQ();} else finish(); }
+function back(){ if(idx>0){idx--;renderQ();} }
+
+function compute(){
+  const score={}, top={}; AXES.forEach(a=>{score[a]=0;top[a]=0;});
+  QUESTIONS.forEach((q,i)=>{const v=answers[i]??0; score[q.t]+=v; if(v===3) top[q.t]++;});
+  const max=Math.max(...AXES.map(a=>score[a]));
+  let cands=AXES.filter(a=>score[a]===max);
+  if(cands.length>1){const mt=Math.max(...cands.map(a=>top[a])); cands=cands.filter(a=>top[a]===mt);}
+  if(cands.length>1){cands.sort((a,b)=>PRIORITY.indexOf(a)-PRIORITY.indexOf(b));}
+  return {type:cands[0],score,low:max<=3};
+}
+function finish(){
+  $("barFill").style.width="100%";
+  const r=compute(); lastResult=r; const T=TYPES[r.type];
+  $("rName").textContent=T.name; $("rCatch").textContent=T.catch; $("lowMsg").hidden=!r.low;
+  $("rTraits").innerHTML=T.traits.map(s=>`<li>${s}</li>`).join("");
+  $("rCause").textContent=T.cause;
+  $("rSrc").innerHTML=`出典：<a href="${T.src[1]}" target="_blank" rel="noopener">${T.src[0]}</a>`;
+  $("rRx").innerHTML=T.rx.map(s=>`<li><span>${s}</span></li>`).join("");
+  $("rTeikoku").textContent=T.teikoku;
+  drawRadarSVG(r.score, r.type);
+  const url=location.href.split("#")[0].split("?")[0];
+  const text=`私は【${T.name}】でした。${T.catch}。\n#三日坊主タイプ診断`;
+  $("shareX").href=`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+  $("shareLine").href=`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+  renderCTA();
+  show("result");
+}
+function renderCTA(){
+  const c=$("ctaBtns"); c.innerHTML=""; const btns=[];
+  if(CONFIG.noteUrl) btns.push(`<a class="btn btn-gold" href="${CONFIG.noteUrl}" target="_blank" rel="noopener">帝国の詳しい中身を見る</a>`);
+  if(CONFIG.standardUrl) btns.push(`<a class="btn ${btns.length?'btn-sub':'btn-gold'}" href="${CONFIG.standardUrl}" target="_blank" rel="noopener">スタンダード（月980円）で入る</a>`);
+  if(CONFIG.premiumUrl) btns.push(`<a class="btn btn-sub" href="${CONFIG.premiumUrl}" target="_blank" rel="noopener">プレミアム（月9,980円）で入る</a>`);
+  if(CONFIG.instagramUrl) btns.push(`<a class="btn btn-ghost" href="${CONFIG.instagramUrl}" target="_blank" rel="noopener">Instagramを見る</a>`);
+  c.innerHTML = btns.length ? btns.join("") : `<p class="note">詳しくは、この診断を紹介していたアカウントのプロフィールリンクからどうぞ。</p>`;
+}
+
+/* ---- レーダー（画面用SVG） ---- */
+function pts(cx,cy,r,vals){return vals.map((v,i)=>{const a=(-90+i*72)*Math.PI/180;return [cx+Math.cos(a)*r*v, cy+Math.sin(a)*r*v];});}
+function drawRadarSVG(score,type){
+  const cx=170,cy=165,R=110, svg=$("radar"); let h="";
+  [1/3,2/3,1].forEach(k=>{h+=`<polygon points="${pts(cx,cy,R,AXES.map(()=>k)).map(p=>p.join(",")).join(" ")}" fill="none" stroke="#2f2f2f" stroke-width="1"/>`;});
+  pts(cx,cy,R,AXES.map(()=>1)).forEach(p=>{h+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#2f2f2f"/>`;});
+  const vals=AXES.map(a=>Math.max(.06,score[a]/9));
+  h+=`<polygon points="${pts(cx,cy,R,vals).map(p=>p.join(",")).join(" ")}" fill="rgba(212,175,55,.28)" stroke="#d4af37" stroke-width="2"/>`;
+  pts(cx,cy,R,vals).forEach(p=>{h+=`<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#f2d675"/>`;});
+  pts(cx,cy,R+30,AXES.map(()=>1)).forEach((p,i)=>{const a=AXES[i],on=a===type;
+    h+=`<text x="${p[0]}" y="${p[1]+4}" text-anchor="middle" font-size="13" font-family="Noto Sans JP, sans-serif" fill="${on?'#f2d675':'#9a9a9a'}" font-weight="${on?700:400}">${TYPES[a].short}</text>`;});
+  svg.innerHTML=h;
+}
+
+/* ---- シェア画像（1080×1920） ---- */
+async function makeImage(){
+  const r=lastResult, T=TYPES[r.type];
+  try{await Promise.all([document.fonts.load('800 140px "Shippori Mincho B1"'),document.fonts.load('700 52px "Shippori Mincho B1"'),document.fonts.load('400 36px "Noto Sans JP"')]);}catch(e){}
+  const c=document.createElement("canvas"); c.width=1080; c.height=1920; const g=c.getContext("2d");
+  g.fillStyle="#0b0b0b"; g.fillRect(0,0,1080,1920);
+  const grd=g.createRadialGradient(540,0,50,540,0,1100); grd.addColorStop(0,"rgba(212,175,55,.22)"); grd.addColorStop(1,"rgba(212,175,55,0)");
+  g.fillStyle=grd; g.fillRect(0,0,1080,1920);
+  g.strokeStyle="#d4af37"; g.lineWidth=3; g.strokeRect(60,60,960,1800);
+  g.textAlign="center"; const M='"Shippori Mincho B1","Hiragino Mincho ProN",serif', S='"Noto Sans JP","Hiragino Sans",sans-serif';
+  g.fillStyle="#d4af37"; g.font=`700 44px ${M}`; g.fillText("三日坊主タイプ診断",540,210);
+  g.fillStyle="#bbbbbb"; g.font=`500 46px ${M}`; g.fillText("私のタイプは",540,390);
+  g.fillStyle="#f2d675"; g.font=`800 150px ${M}`; g.fillText(T.name,540,580);
+  g.fillStyle="#ececec"; g.font=`700 54px ${M}`; g.fillText(T.catch,540,700);
+  const cx=540,cy=1140,R=280;
+  g.strokeStyle="#333"; g.lineWidth=2;
+  [1/3,2/3,1].forEach(k=>{g.beginPath(); pts(cx,cy,R,AXES.map(()=>k)).forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])); g.closePath(); g.stroke();});
+  pts(cx,cy,R,AXES.map(()=>1)).forEach(p=>{g.beginPath();g.moveTo(cx,cy);g.lineTo(p[0],p[1]);g.stroke();});
+  const vals=AXES.map(a=>Math.max(.06,r.score[a]/9));
+  g.beginPath(); pts(cx,cy,R,vals).forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])); g.closePath();
+  g.fillStyle="rgba(212,175,55,.3)"; g.fill(); g.strokeStyle="#d4af37"; g.lineWidth=5; g.stroke();
+  pts(cx,cy,R+80,AXES.map(()=>1)).forEach((p,i)=>{const a=AXES[i],on=a===r.type; g.fillStyle=on?"#f2d675":"#9a9a9a"; g.font=`${on?700:400} 40px ${S}`; g.fillText(TYPES[a].short,p[0],p[1]+14);});
+  g.fillStyle="#ececec"; g.font=`500 44px ${M}`; g.fillText("あなたは、何型？",540,1640);
+  g.fillStyle="#d4af37"; g.font=`400 34px ${S}`; g.fillText("#三日坊主タイプ診断",540,1715);
+  return new Promise(res=>c.toBlob(b=>res(b),"image/png"));
+}
+async function shareImage(){
+  const btn=$("shareImgBtn"); btn.textContent="画像を作っています…"; btn.disabled=true;
+  try{
+    const blob=await makeImage(); const T=TYPES[lastResult.type];
+    const file=new File([blob],`mikkabozu_${lastResult.type}.png`,{type:"image/png"});
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      try{await navigator.share({files:[file],text:`私は【${T.name}】でした。#三日坊主タイプ診断`});return;}catch(e){if(e&&e.name==="AbortError")return;}
+    }
+    const url=URL.createObjectURL(blob); $("shareImg").src=url; $("dlBtn").href=url; $("dlBtn").download=file.name; $("modal").hidden=false;
+  } finally { btn.textContent="結果を画像で保存・シェア"; btn.disabled=false; }
+}
+
+$("startBtn").onclick=start; $("backBtn").onclick=back; $("retryBtn").onclick=()=>show("intro");
+$("shareImgBtn").onclick=shareImage; $("closeModal").onclick=()=>$("modal").hidden=true;
+$("modal").onclick=e=>{if(e.target.id==="modal")$("modal").hidden=true;};
+</script>
+</body>
+</html>
