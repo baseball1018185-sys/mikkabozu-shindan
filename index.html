@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>三日坊主タイプ診断｜あなたが続かない、本当の理由</title>
-<meta name="description" content="15の質問に答えるだけ。約2分で、あなたが続かない原因と、今日からの処方箋が分かります。">
+<title>努力タイプ診断｜あなたの努力は、どこで止まるのか</title>
+<meta name="description" content="21の質問に答えるだけ。約3分で、あなたの努力のタイプと、努力が止まる原因、今日からの処方箋が分かります。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="三日坊主タイプ診断｜あなたが続かない、本当の理由">
-<meta property="og:description" content="15の質問に答えるだけ。約2分で、あなたが続かない原因と、今日からの処方箋が分かります。">
+<meta property="og:title" content="努力タイプ診断｜あなたの努力は、どこで止まるのか">
+<meta property="og:description" content="21の質問に答えるだけ。約3分で、あなたの努力のタイプと、努力が止まる原因、今日からの処方箋が分かります。">
 <meta property="og:image" content="https://baseball1018185-sys.github.io/mikkabozu-shindan/og.png">
 <meta property="og:url" content="https://baseball1018185-sys.github.io/mikkabozu-shindan/">
 <meta name="twitter:card" content="summary_large_image">
@@ -93,17 +93,17 @@ h1,h2,h3,.mincho{font-family:var(--mincho)}
   <section id="intro" class="screen">
     <div class="intro">
       <div class="eyebrow">DIAGNOSIS</div>
-      <h1><span>三日坊主</span><br>タイプ診断</h1>
-      <p class="lead">あなたが続かない、本当の理由。</p>
-      <p>15の質問に答えるだけ。約2分で、あなたが続かない原因と、今日からの処方箋が分かります。</p>
-      <div class="types"><span>夜ふかし型</span><span>完璧主義型</span><span>ひとり甘え型</span><span>大風呂敷型</span><span>燃え尽き型</span></div>
+      <h1><span>努力</span><br>タイプ診断</h1>
+      <p class="lead">あなたの努力は、どこで止まるのか。</p>
+      <p>21の質問に答えるだけ。約3分で、あなたの努力のタイプと、努力が止まる原因、今日からの処方箋が分かります。</p>
+      <div class="types" id="typeChips"></div>
       <button class="btn btn-gold" id="startBtn">診断をはじめる</button>
       <p class="note" style="margin-top:16px">※エンタメと自己理解のための簡易診断です。医学的な診断ではありません。</p>
     </div>
   </section>
 
   <section id="quiz" class="screen" hidden>
-    <div class="top"><button class="back" id="backBtn">← 戻る</button><span class="count" id="count">1 / 15</span></div>
+    <div class="top"><button class="back" id="backBtn">← 戻る</button><span class="count" id="count">1 / 21</span></div>
     <div class="bar"><i id="barFill"></i></div>
     <div class="qnum" id="qnum">Q1</div>
     <p class="qtext" id="qtext"></p>
@@ -117,12 +117,13 @@ h1,h2,h3,.mincho{font-family:var(--mincho)}
       <p class="catch" id="rCatch"></p>
     </div>
     <p class="lowmsg" id="lowMsg" hidden>どのタイプの傾向も弱めでした。今のやり方で続けられているなら、それが一番です。いちばん近いのは、このタイプです。</p>
-    <svg class="radar" id="radar" viewBox="0 0 340 320" role="img" aria-label="5つのタイプの傾向"></svg>
+    <svg class="radar" id="radar" viewBox="0 0 360 340" role="img" aria-label="7つのタイプの傾向"></svg>
 
-    <div class="card"><h3><b>1</b>あなたの特徴</h3><ul id="rTraits"></ul></div>
-    <div class="card"><h3><b>2</b>なぜ続かないのか</h3><p id="rCause"></p><div class="src" id="rSrc"></div></div>
-    <div class="card"><h3><b>3</b>今日からの処方箋</h3><ol id="rRx"></ol></div>
-    <div class="card"><h3><b>4</b>帝国なら、こう続けられる</h3><p id="rTeikoku"></p></div>
+    <div class="card"><h3><b>1</b>あなたの強み</h3><p id="rStrong"></p></div>
+    <div class="card"><h3><b>2</b>努力が止まるところ</h3><ul id="rTraits"></ul></div>
+    <div class="card"><h3><b>3</b>なぜ止まるのか</h3><p id="rCause"></p><div class="src" id="rSrc"></div></div>
+    <div class="card"><h3><b>4</b>今日からの処方箋</h3><ol id="rRx"></ol></div>
+    <div class="card"><h3><b>5</b>帝国なら、こう続けられる</h3><p id="rTeikoku"></p></div>
 
     <div class="share">
       <button class="btn btn-gold" id="shareImgBtn">結果を画像で保存・シェア</button>
@@ -150,7 +151,7 @@ h1,h2,h3,.mincho{font-family:var(--mincho)}
   <div class="box">
     <img id="shareImg" alt="診断結果の画像">
     <p>画像を長押しすると保存できます。ストーリーズに載せてみてください。</p>
-    <a class="btn btn-gold" id="dlBtn" download="mikkabozu.png">画像を保存する</a>
+    <a class="btn btn-gold" id="dlBtn" download="doryoku-type.png">画像を保存する</a>
     <button class="btn btn-ghost" id="closeModal">閉じる</button>
   </div>
 </div>
@@ -165,38 +166,57 @@ const CONFIG = {
 };
 /* ============================================== */
 
-const AXES = ["night","perfect","alone","big","tired"];
+const AXES = ["perfect","night","alone","big","tired","prep","drift"];
 const TYPES = {
   night:{name:"夜ふかし型",short:"夜ふかし",catch:"夜に元気、朝に負ける人",
+    strong:"夜の集中力が高く、ハマった時の没頭は誰よりも深い。",
     traits:["夜になると頭が冴えて、「明日こそやろう」と思える。","でも寝るのが遅くなり、朝は起きられない。","決めたのは夜の自分、破るのは朝の自分。"],
     cause:"体内時計が夜側にずれています。厚生労働省の睡眠ガイドでは、起きてすぐ朝日の光を浴びると体内時計がリセットされるとされ、寝室にスマホを持ち込まないことが勧められています。",
     src:["厚生労働省「健康づくりのための睡眠ガイド2023」","https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/suimin/index.html"],
     rx:["寝る時刻ではなく、起きる時刻を先に決める","起きたらすぐカーテンを開けて、朝日を浴びる","スマホは寝室の外で充電する"],
     teikoku:"挨拶部屋は、何時に起きても書けば出席です。まずは起きた時刻を毎日書いて、少しずつ早めていきましょう。朝が苦手なうちは、夜活ルームから始めても大丈夫です。"},
   perfect:{name:"完璧主義型",short:"完璧主義",catch:"1日の失敗で、全部を捨てる人",
+    strong:"始めた時の本気度と、質へのこだわりは誰よりも高い。",
     traits:["始めるときは、誰よりも本気。","でも1日でも予定どおりにいかないと、「もうダメだ」と思ってしまう。","そして、全部やめる。"],
     cause:"「1日休んだら終わり」という思い込みが原因です。ロンドン大学の研究では、習慣になるまで平均66日かかる一方、1日サボっても習慣化の確率は下がりませんでした。",
     src:["Lally et al.（2010）European Journal of Social Psychology","https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674"],
     rx:["できなかった日も「やってない」と記録に残す","最低ラインを決める（疲れた日は1分でいい）","2日連続で休まないことだけ守る"],
     teikoku:"帝国では、月2回までは休んでも連続が切れません。連続が切れても、一度手に入れた称号は下がりません。「1日くらい大丈夫」が、ルールになっている場所です。"},
-  alone:{name:"ひとり甘え型",short:"ひとり甘え",catch:"誰も見ていないと、やめてしまう人",
+  alone:{name:"孤軍奮闘型",short:"孤軍奮闘",catch:"誰も見ていないと、やめてしまう人",
+    strong:"人との約束は必ず守る。責任感が強く、任されたことはやり切る。",
     traits:["人との約束は守れるのに、自分との約束は後回し。","1人で始めたことは、誰にも気づかれずに終わる。","「今日はいいか」が、毎日続く。"],
     cause:"1人の目標は、やめても誰にも気づかれません。138の研究をまとめた分析では、進捗を記録し、人に見せたり報告したりするほど、目標の達成が進むことが分かっています。",
     src:["Harkin et al.（2016）Psychological Bulletin","https://pubmed.ncbi.nlm.nih.gov/26479070/"],
     rx:["目標を1人に宣言する","毎日の結果を、誰かに報告する","報告する時刻を決めておく"],
     teikoku:"帝国では、起きたら挨拶部屋、寝る前に就寝報告部屋に書くだけ。それだけで、毎日「誰かに見られている」状態が作れます。"},
   big:{name:"大風呂敷型",short:"大風呂敷",catch:"目標が大きすぎて、動けなくなる人",
+    strong:"大きく考える力と、最初の1週間の爆発力がある。",
     traits:["やる気があるときに、大きな目標をいくつも立てる。","最初の1週間は全力。","でも途中で重くなって、止まってしまう。"],
     cause:"目標が大きすぎる、多すぎる、曖昧すぎるのが原因です。94の研究をまとめた分析では、「Xが起きたらYする」と具体的に決めておくだけで、目標の達成率が上がることが分かっています。",
     src:["Gollwitzer & Sheeran（2006）Advances in Experimental Social Psychology","https://www.researchgate.net/publication/37367696"],
     rx:["目標は1つに絞る","数字を入れる（「英語を頑張る」→「英単語を1日10個」）","4週に分けて、1週目を一番小さくする"],
     teikoku:"帝国の月間目標は、1つだけ。週間目標で4つに分けて、×だった週は「来週は何を1つ減らすか」を決めます。小さく始めて、◯を積み上げる場所です。"},
   tired:{name:"燃え尽き型",short:"燃え尽き",catch:"仕事終わりに、何も残っていない人",
+    strong:"仕事に全力を出せる。目の前のことに手を抜かない。",
     traits:["平日は仕事で精一杯。","帰ってからやろうと思っても、気づけばスマホを見て寝る時間。","「週末にまとめて」と思って、結局やらない。"],
     cause:"気力が残っていない時間に、大事なことを置いています。205人の1週間を記録した研究では、意志が強い人ほど我慢した回数はむしろ少なく、誘惑に出会う回数そのものが少ないことが分かりました。続く人は、根性ではなく環境で動いています。",
     src:["Hofmann et al.（2012）Journal of Personality and Social Psychology","https://pubmed.ncbi.nlm.nih.gov/22149456/"],
     rx:["やることを「5分で終わる大きさ」にする","準備を前の日に済ませて、始めるまでの手間を減らす","気力が残っている朝か、昼休みに回す"],
-    teikoku:"帝国の朝活ルームと夜活ルームは、入るだけでOK。カメラもマイクもオフのまま、誰かがいる場所で5分だけ手を動かす。そこから始められます。"}
+    teikoku:"帝国の朝活ルームと夜活ルームは、入るだけでOK。カメラもマイクもオフのまま、誰かがいる場所で5分だけ手を動かす。そこから始められます。"},
+  prep:{name:"準備万端型",short:"準備万端",catch:"調べて満足して、始めない人",
+    strong:"調べる力と、計画を立てる力は誰よりも高い。",
+    traits:["始める前に、本や動画でやり方を集める。","計画を立てた時点で、やった気になる。","「もう少し調べてから」で、1ヶ月が終わる。"],
+    cause:"「やるつもり」と「やった」の間には、大きな溝があります。47の実験をまとめた分析では、「やろう」という気持ちを大きく高めても、実際の行動は少ししか変わりませんでした。足りないのは知識ではなく、最初の1回です。",
+    src:["Webb & Sheeran（2006）Psychological Bulletin","https://pubmed.ncbi.nlm.nih.gov/16536643/"],
+    rx:["調べるのは15分まで、と決める","今日できる一番小さい行動を1つやる","計画より先に、やった記録を1行書く"],
+    teikoku:"帝国では、計画より先に「今日やったこと」を書きます。挨拶部屋に1行書いたら、それがもう1日目です。調べるのは、書いた後で大丈夫です。"},
+  drift:{name:"目移り型",short:"目移り",catch:"続く前に、次へ行く人",
+    strong:"新しいことを始める速さと、好奇心は誰よりも強い。",
+    traits:["新しい方法や教材を見ると、すぐ試したくなる。","2週間たつと飽きて、別のものに乗り換える。","始めたものは多いのに、終わったものがない。"],
+    cause:"成果を分けるのは、才能よりも「同じ目標を追い続ける力」です。ペンシルベニア大学の研究では、長い目標に粘り強く取り組む人ほど、IQに関係なく学歴や成績などの成果が高いことが分かっています。",
+    src:["Duckworth et al.（2007）Journal of Personality and Social Psychology","https://pubmed.ncbi.nlm.nih.gov/17547490/"],
+    rx:["今やっている1つを、4週間は変えない","新しくやりたいことは「来月の候補」にメモするだけ","飽きたら、やめるのではなく量を半分にする"],
+    teikoku:"帝国の月間目標は1つだけで、月の途中では変えません。やりたいことが増えたら、来月の候補にします。1ヶ月続けた分は、称号として残ります。"}
 };
 const QUESTIONS = [
   {t:"night",q:"夜になると元気が出て、つい夜更かししてしまう"},
@@ -213,10 +233,16 @@ const QUESTIONS = [
   {t:"big",q:"始めた最初の1週間が、一番がんばっている"},
   {t:"tired",q:"仕事から帰ると、何もする気が起きない"},
   {t:"tired",q:"「週末にまとめてやろう」と思って、結局やらない"},
-  {t:"tired",q:"疲れて、ソファやベッドで寝落ちすることがある"}
+  {t:"tired",q:"疲れて、ソファやベッドで寝落ちすることがある"},
+  {t:"prep",q:"始める前に、本や動画で調べる時間が長い"},
+  {t:"prep",q:"計画を立てただけで、満足してしまうことがある"},
+  {t:"prep",q:"「準備ができてから」と思って、始めるのが遅れる"},
+  {t:"drift",q:"新しい方法や教材を見ると、すぐ試したくなる"},
+  {t:"drift",q:"続ける前に、別のことを始めてしまう"},
+  {t:"drift",q:"買っただけ、登録しただけで終わったものがある"}
 ];
 const CHOICES = [["よくある",3],["ときどき",2],["あまりない",1],["ない",0]];
-const PRIORITY = ["perfect","alone","big","night","tired"];
+const PRIORITY = ["perfect","alone","big","prep","drift","night","tired"];
 
 const $ = id => document.getElementById(id);
 let order=[], answers={}, idx=0, lastResult=null;
@@ -255,7 +281,7 @@ function compute(){
 function finish(){
   $("barFill").style.width="100%";
   const r=compute(); lastResult=r; const T=TYPES[r.type];
-  $("rName").textContent=T.name; $("rCatch").textContent=T.catch; $("lowMsg").hidden=!r.low;
+  $("rName").textContent=T.name; $("rCatch").textContent=T.catch; $("rStrong").textContent=T.strong; $("lowMsg").hidden=!r.low;
   $("rTraits").innerHTML=T.traits.map(s=>`<li>${s}</li>`).join("");
   $("rCause").textContent=T.cause;
   $("rSrc").innerHTML=`出典：<a href="${T.src[1]}" target="_blank" rel="noopener">${T.src[0]}</a>`;
@@ -263,7 +289,7 @@ function finish(){
   $("rTeikoku").textContent=T.teikoku;
   drawRadarSVG(r.score, r.type);
   const url=location.href.split("#")[0].split("?")[0];
-  const text=`私は【${T.name}】でした。${T.catch}。\n#三日坊主タイプ診断`;
+  const text=`私は【${T.name}】でした。${T.catch}。\n#努力タイプ診断`;
   $("shareX").href=`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
   $("shareLine").href=`https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
   renderCTA();
@@ -279,15 +305,15 @@ function renderCTA(){
 }
 
 /* ---- レーダー（画面用SVG） ---- */
-function pts(cx,cy,r,vals){return vals.map((v,i)=>{const a=(-90+i*72)*Math.PI/180;return [cx+Math.cos(a)*r*v, cy+Math.sin(a)*r*v];});}
+function pts(cx,cy,r,vals){return vals.map((v,i)=>{const a=(-90+i*360/vals.length)*Math.PI/180;return [cx+Math.cos(a)*r*v, cy+Math.sin(a)*r*v];});}
 function drawRadarSVG(score,type){
-  const cx=170,cy=165,R=110, svg=$("radar"); let h="";
+  const cx=180,cy=172,R=108, svg=$("radar"); let h="";
   [1/3,2/3,1].forEach(k=>{h+=`<polygon points="${pts(cx,cy,R,AXES.map(()=>k)).map(p=>p.join(",")).join(" ")}" fill="none" stroke="#2f2f2f" stroke-width="1"/>`;});
   pts(cx,cy,R,AXES.map(()=>1)).forEach(p=>{h+=`<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}" stroke="#2f2f2f"/>`;});
   const vals=AXES.map(a=>Math.max(.06,score[a]/9));
   h+=`<polygon points="${pts(cx,cy,R,vals).map(p=>p.join(",")).join(" ")}" fill="rgba(212,175,55,.28)" stroke="#d4af37" stroke-width="2"/>`;
   pts(cx,cy,R,vals).forEach(p=>{h+=`<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#f2d675"/>`;});
-  pts(cx,cy,R+30,AXES.map(()=>1)).forEach((p,i)=>{const a=AXES[i],on=a===type;
+  pts(cx,cy,R+32,AXES.map(()=>1)).forEach((p,i)=>{const a=AXES[i],on=a===type;
     h+=`<text x="${p[0]}" y="${p[1]+4}" text-anchor="middle" font-size="13" font-family="Noto Sans JP, sans-serif" fill="${on?'#f2d675':'#9a9a9a'}" font-weight="${on?700:400}">${TYPES[a].short}</text>`;});
   svg.innerHTML=h;
 }
@@ -302,8 +328,8 @@ async function makeImage(){
   g.fillStyle=grd; g.fillRect(0,0,1080,1920);
   g.strokeStyle="#d4af37"; g.lineWidth=3; g.strokeRect(60,60,960,1800);
   g.textAlign="center"; const M='"Shippori Mincho B1","Hiragino Mincho ProN",serif', S='"Noto Sans JP","Hiragino Sans",sans-serif';
-  g.fillStyle="#d4af37"; g.font=`700 44px ${M}`; g.fillText("三日坊主タイプ診断",540,210);
-  g.fillStyle="#bbbbbb"; g.font=`500 46px ${M}`; g.fillText("私のタイプは",540,390);
+  g.fillStyle="#d4af37"; g.font=`700 44px ${M}`; g.fillText("努力タイプ診断",540,210);
+  g.fillStyle="#bbbbbb"; g.font=`500 46px ${M}`; g.fillText("私の努力タイプは",540,390);
   g.fillStyle="#f2d675"; g.font=`800 150px ${M}`; g.fillText(T.name,540,580);
   g.fillStyle="#ececec"; g.font=`700 54px ${M}`; g.fillText(T.catch,540,700);
   const cx=540,cy=1140,R=280;
@@ -313,23 +339,24 @@ async function makeImage(){
   const vals=AXES.map(a=>Math.max(.06,r.score[a]/9));
   g.beginPath(); pts(cx,cy,R,vals).forEach((p,i)=>i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])); g.closePath();
   g.fillStyle="rgba(212,175,55,.3)"; g.fill(); g.strokeStyle="#d4af37"; g.lineWidth=5; g.stroke();
-  pts(cx,cy,R+80,AXES.map(()=>1)).forEach((p,i)=>{const a=AXES[i],on=a===r.type; g.fillStyle=on?"#f2d675":"#9a9a9a"; g.font=`${on?700:400} 40px ${S}`; g.fillText(TYPES[a].short,p[0],p[1]+14);});
+  pts(cx,cy,R+84,AXES.map(()=>1)).forEach((p,i)=>{const a=AXES[i],on=a===r.type; g.fillStyle=on?"#f2d675":"#9a9a9a"; g.font=`${on?700:400} 36px ${S}`; g.fillText(TYPES[a].short,p[0],p[1]+14);});
   g.fillStyle="#ececec"; g.font=`500 44px ${M}`; g.fillText("あなたは、何型？",540,1640);
-  g.fillStyle="#d4af37"; g.font=`400 34px ${S}`; g.fillText("#三日坊主タイプ診断",540,1715);
+  g.fillStyle="#d4af37"; g.font=`400 34px ${S}`; g.fillText("#努力タイプ診断",540,1715);
   return new Promise(res=>c.toBlob(b=>res(b),"image/png"));
 }
 async function shareImage(){
   const btn=$("shareImgBtn"); btn.textContent="画像を作っています…"; btn.disabled=true;
   try{
     const blob=await makeImage(); const T=TYPES[lastResult.type];
-    const file=new File([blob],`mikkabozu_${lastResult.type}.png`,{type:"image/png"});
+    const file=new File([blob],`doryoku-type_${lastResult.type}.png`,{type:"image/png"});
     if(navigator.canShare && navigator.canShare({files:[file]})){
-      try{await navigator.share({files:[file],text:`私は【${T.name}】でした。#三日坊主タイプ診断`});return;}catch(e){if(e&&e.name==="AbortError")return;}
+      try{await navigator.share({files:[file],text:`私は【${T.name}】でした。#努力タイプ診断`});return;}catch(e){if(e&&e.name==="AbortError")return;}
     }
     const url=URL.createObjectURL(blob); $("shareImg").src=url; $("dlBtn").href=url; $("dlBtn").download=file.name; $("modal").hidden=false;
   } finally { btn.textContent="結果を画像で保存・シェア"; btn.disabled=false; }
 }
 
+$("typeChips").innerHTML=AXES.map(a=>`<span>${TYPES[a].name}</span>`).join("");
 $("startBtn").onclick=start; $("backBtn").onclick=back; $("retryBtn").onclick=()=>show("intro");
 $("shareImgBtn").onclick=shareImage; $("closeModal").onclick=()=>$("modal").hidden=true;
 $("modal").onclick=e=>{if(e.target.id==="modal")$("modal").hidden=true;};
